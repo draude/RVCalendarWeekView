@@ -136,6 +136,15 @@
 
 //================================================
 #pragma mark - Set Events
+
+- (void)setDateFormatter:(NSDateFormatter *)dateFormatter {
+    if (! _dateFormatter) {
+        _dateFormatter = dateFormatter;
+        _dateFormatter.dateFormat = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"EEE MMMM d, YYYY" : @"EEE d");
+    }
+    _weekFlowLayout.dateFormatter = dateFormatter;
+}
+
 //================================================
 -(void)setEvents:(NSArray *)events{
     mEvents = events;
@@ -201,6 +210,7 @@
     UICollectionReusableView *view;
     if (kind == MSCollectionElementKindDayColumnHeader) {
         MSDayColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
+        dayColumnHeader.dateFormatter = self.dateFormatter;
         NSDate *day                 = [self.weekFlowLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         NSDate *currentDay          = [self currentTimeComponentsForCollectionView:self.collectionView layout:self.weekFlowLayout];
         

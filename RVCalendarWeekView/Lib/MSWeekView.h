@@ -24,11 +24,14 @@
 
 @interface MSWeekView : UIView <UICollectionViewDataSource, UICollectionViewDelegate,MSCollectionViewDelegateCalendarLayout>
 {
+    NSDateFormatter *calendarDateFormatter;
     NSArray             * mEvents;
 }
 
 @property(strong,nonatomic) UICollectionView* collectionView;
 @property(strong,nonatomic) MSCollectionViewCalendarLayout* weekFlowLayout;
+
+@property (strong, nonatomic) NSDateFormatter*dateFormatter;
 
 @property(nonatomic) int daysToShowOnScreen;
 @property(nonatomic) int daysToShow;

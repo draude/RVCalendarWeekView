@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSDate *day;
 @property (nonatomic, assign) BOOL currentDay;
 
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @end

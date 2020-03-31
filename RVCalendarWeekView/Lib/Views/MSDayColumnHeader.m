@@ -1,11 +1,3 @@
-//
-//  MSDayColumnHeader.m
-//  Example
-//
-//  Created by Eric Horacek on 2/26/13.
-//  Copyright (c) 2015 Eric Horacek. All rights reserved.
-//
-
 #import "MSDayColumnHeader.h"
 #define MAS_SHORTHAND
 #import "Masonry.h"
@@ -48,13 +40,8 @@
 - (void)setDay:(NSDate *)day
 {
     _day = day;
-    
-    static NSDateFormatter *dateFormatter;
-    if (!dateFormatter) {
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"EEE MMMM d, YYYY" : @"EEE d");
-    }
-    self.title.text = [dateFormatter stringFromDate:day];
+    NSString *dayText = [self.dateFormatter stringFromDate:day];
+    self.title.text = dayText;
     self.title.adjustsFontSizeToFitWidth = YES;
     [self setNeedsLayout];
 }
